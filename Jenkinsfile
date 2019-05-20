@@ -11,14 +11,13 @@ pipeline {
         sh 'return 0'
         script {
           status = sh(returnStatus: true, script: "return 1")
-          echo status
           if (status == 0) {
               echo 'Succeeded!'
           } else {
               echo "Failed"
+              sh(returnStatus: true, script: "ps aux")
           }
           status = sh(returnStatus: true, script: "return 0")
-          echo status
         }
       }
     }
