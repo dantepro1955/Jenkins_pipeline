@@ -9,13 +9,13 @@ pipeline {
           sh 'return 1'
         }
         sh 'return 0'
-      }
-      script {
-        status = sh(returnStatus: true, script: "return 1")
-        if (status != 0) {
-            echo 'Succeeded!'
-        } else {
-            echo "Failed"
+        script {
+          status = sh(returnStatus: true, script: "return 1")
+          if (status != 0) {
+              echo 'Succeeded!'
+          } else {
+              echo "Failed"
+          }
         }
       }
     }
