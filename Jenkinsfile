@@ -11,7 +11,7 @@ pipeline {
 
         sh 'return 0'
         script {
-          status = sh(returnStatus: true, script: "return 1")
+          status = sh(returnStatus: true, script: "return 0")
           if (status == 0) {
             echo 'Succeeded!'
             emailext(subject: 'Succeeded', body: 'Succeeded', to: 'overtherainbow_dg@yahoo.com')
