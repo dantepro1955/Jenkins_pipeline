@@ -5,14 +5,12 @@ pipeline {
       steps {
         sh 'ps aux'
         sh 'return 0'
-        try {
-            sh 'might fail'
+        def status = sh(returnStatus: true, script: "return 1")
+        if (status != 0) {
             echo 'Succeeded!'
-        } catch (err) {
-            echo "Failed: ${err}"
-        } finally {
-            echo "Finally"
-        }
+        } else {
+            echo "Failed"
+        } 
         warnError(message: 'catch', catchInterruptions: true) {
           sh 'return 1'
         }
