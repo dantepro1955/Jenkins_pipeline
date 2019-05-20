@@ -14,14 +14,14 @@ pipeline {
           status = sh(returnStatus: true, script: "return 1")
           if (status == 0) {
             echo 'Succeeded!'
+            emailext(subject: 'Succeeded', body: 'Succeeded', to: 'overtherainbow_dg@yahoo.com')
           } else {
             echo "Failed"
             sh(returnStatus: true, script: "ps aux")
+            emailext(subject: 'Failed', body: 'Failed', to: 'overtherainbow_dg@yahoo.com')
           }
           status = sh(returnStatus: true, script: "return 0")
         }
-
-        emailext(subject: 'abcd', body: 'hjhjj', to: 'overtherainbow_dg@yahoo.com')
       }
     }
   }
