@@ -1,6 +1,5 @@
 pipeline {
   agent any
-  def status = 0;
   stages {
     stage('Step 1') {
       steps {
@@ -11,11 +10,10 @@ pipeline {
             echo 'Succeeded!'
         } else {
             echo "Failed"
-        } 
+        }
         warnError(message: 'catch', catchInterruptions: true) {
           sh 'return 1'
         }
-
         sh 'return 0'
       }
     }
