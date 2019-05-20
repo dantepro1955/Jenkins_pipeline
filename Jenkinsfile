@@ -10,12 +10,14 @@ pipeline {
         }
         sh 'return 0'
       }
-      status = sh(returnStatus: true, script: "return 1")
+      script {
+        status = sh(returnStatus: true, script: "return 1")
         if (status != 0) {
             echo 'Succeeded!'
         } else {
             echo "Failed"
         }
+      }
     }
   }
 }
